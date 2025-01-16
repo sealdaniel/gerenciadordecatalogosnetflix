@@ -11,3 +11,19 @@
     }
   ]
 }
+
+
+{
+  "scriptFile": "bin/Debug/netcoreapp3.1/SaveToCosmosDBFunction.dll",
+  "entryPoint": "SaveToCosmosDBFunction.Run",
+  "bindings": [
+    {
+      "name": "movies",
+      "type": "cosmosDB",
+      "direction": "out",
+      "databaseName": "NetflixCatalog",
+      "collectionName": "Movies",
+      "connectionStringSetting": "CosmosDBConnection"
+    }
+  ]
+}
