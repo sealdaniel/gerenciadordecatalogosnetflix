@@ -1,0 +1,20 @@
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+
+public static class SaveToCosmosDBFunction
+{
+    [FunctionName("SaveToCosmosDBFunction")]
+    public static async Task Run(
+        [CosmosDB(
+            databaseName: "NetflixCatalog",
+            collectionName: "Movies",
+            ConnectionStringSetting = "CosmosDBConnection")] IAsyncCollector<Movie> movies,
+        string name, string genre, int year, ILogger log)
+    {
+        var movie = new Movie { Name = name, Genre = genre, Year = year };
+        await movies.AddAsync(movie);
+        log.LogInformation($"Movie {name} added to CosmosDB.");
+    }
+}
