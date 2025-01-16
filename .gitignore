@@ -1,0 +1,11 @@
+# .NET related
+bin/
+obj/
+
+# Azure Functions related
+local.settings.json
+.vscode/
+
+# User-specific files
+*.user
+*.suo
