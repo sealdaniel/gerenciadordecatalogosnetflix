@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=seuarmazenamento;AccountKey=seuchave",
+    "CosmosDBConnection": "AccountEndpoint=https://seuendpoint.documents.azure.com:443/;AccountKey=seuchave;",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+  }
+}
