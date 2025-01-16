@@ -1,0 +1,23 @@
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System.IO;
+using System.Threading.Tasks;
+
+public static class FileUploadFunction
+{
+    [FunctionName("FileUploadFunction")]
+    public static async Task Run(
+        [BlobTrigger("uploads/{name}", Connection = "AzureWebJobsStorage")] Stream myBlob,
+        string name,
+        ILogger log)
+    {
+        var storageAccount = CloudStorageAccount.Parse(System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
+        var blobClient = storageAccount.CreateCloudBlobClient();
+        var container = blobClient.GetContainerReference("movies");
+        await container.CreateIfNotExistsAsync();
+        var blob = container.GetBlockBlobReference(name);
+        await blob.UploadFromStreamAsync(myBlob);
+        log.LogInformation($"File {name} uploaded successfully.");
+    }
+}
