@@ -1,0 +1,5 @@
+## requirements.txt Esse arquivo é necessário se você estiver usando Python ou outros pacotes que exigem instalação de dependências.
+Para esse projeto em C#, não seria necessário, mas se for necessário adicionar dependências adicionais (como pacotes NuGet), adicione no requirements.txt. ##
+
+azure-functions
+azure-cosmos
