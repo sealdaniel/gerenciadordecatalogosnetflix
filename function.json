@@ -1,0 +1,13 @@
+{
+  "scriptFile": "bin/Debug/netcoreapp3.1/FileUploadFunction.dll",
+  "entryPoint": "FileUploadFunction.Run",
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "uploads/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
